@@ -1,5 +1,3 @@
 moviepy
 TTS
-gTTS
-edge-tts
 manim
