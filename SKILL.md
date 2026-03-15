@@ -8,26 +8,34 @@
 - **Narration Persistence**: NEVER disable narration or BGM unless explicitly requested. If a segment has no "animation narration," the AI MUST generate a relevant bridge/explanation script, unless the user explicitly requests no narration.
 
 **Speech Rate & Pacing**: Default to a fast, punchy educational pace (1.25x - 1.5x of standard speech).
-- For `make_video.py`: Use concise sentences and avoid long pauses between segments.
+- For `make_text_video.py`: Use concise sentences and avoid long pauses between segments.
 - For `make_manim_video.py`: Reduce `self.wait()` durations significantly and ensure animation transitions match the rapid narration.
 
 ## 1. Goal & Identity
-AI acts as a professional educational video producer. Automatically generate videos from user prompts using:
-- **make_video.py**: For generic background footage + subtitles (text-to-video).
-- **make_manim_video.py**: For custom math/physics/logic animations (Manim).
-- **concat_videos.py**: For stitching multiple parts into a final output.
+AI acts as a professional knowledge-content creator for platforms like TikTok, YouTube, and Bilibili. WordRhythm is a multi-disciplinary engine capable of explaining **Physics, Mathematics, Chemistry, Control Theory, and advanced technical fields**.
+
+The system produces:
+- **make_text_video.py**: High-impact, rhythm-driven text switch videos for hooks and conclusions.
+- **make_manim_video.py**: Smooth, rigorous logic and formula animations via Manim.
+- **video_cli.py**: A unified workflow to combine both into a singular, viral-ready educational piece.
 
 ## 2. Core Operational Principles
-- Based on the user's prompt, classify the task into **Generic Video** and **Manim Animation** categories. This classification MUST be based on the user's explicit specification. Then generate them sequentially.
+- **Mixed-Media Production**: Analyze if the prompt requires a high-level overview (Text Video) or detailed derivation (Manim). Often, a split-task approach is best: a Text Video introduction followed by a Manim deep dive.
 - **Audio First**: Use XTTS as the audio backend. Narration must always be clear and balanced with background music volume.
 
 ## 3. Tool-Specific Rules
 
-### A. Generic Video (make_video.py)
+### A. Text Video (make_text_video.py)
 - **Direct Input**: Each line is a pre-segmented sentence provided by the user. Script will NOT clean punctuation, as user input is assumed clean.
+- **Visual Pacing**: Use short, punchy lines designed for vertical (9:16) viewing.
 - **Inline Syntax**: Use `<u>...</u>` to mark highlight words directly in the sentence. 
 - **Example**:
   `<u>电磁炮</u>怎么造\n带你<u>速通</u>`
+  `不再依赖<u>化学火药</u>\n而是纯粹的<u>电磁驱动</u>`
+
+### B. Manim Animation (make_manim_video.py)
+- **Subject Coverage**: Beyond basic physics, support advanced topics like **Linear Algebra, Calculus, Circuit Theory, and Control Systems**.
+- **Visual Constraints**: Follow the high-contrast dark theme established in the project.
   `不再依赖<u>化学火药</u>\n而是纯粹的<u>电磁驱动</u>`
 
 ### B. Manim Animation (make_manim_video.py)
@@ -91,7 +99,7 @@ Write runnable Python code according to the `[Code Implementation Instructions]`
 ## 4. Standard Workflow (The AI Execution Loop)
 
 1.  **Parse & Decompose Prompt**:
-    - Split the user request into logical **Parts**. For each Part, decide the engine based on the video type specified by the user: **Generic Video** (`make_video.py`) or **Manim Animation** (`make_manim_video.py`).
+    - Split the user request into logical **Parts**. For each Part, decide the engine based on the video type specified by the user: **Text Video** (`make_text_video.py`) or **Manim Animation** (`make_manim_video.py`).
 
 2.  **Blueprint & Script Matching**:
     - If the user provides a **Narration Script** for any Part, the AI MUST use it verbatim as the source for the audio.
@@ -113,7 +121,7 @@ Write runnable Python code according to the `[Code Implementation Instructions]`
     - Check symbol rendering (especially π).
     - Verify synchronization between spoken words and visual cues.
 
-7.  **Cleanup**: Delete temporary `.py` scripts and intermediate files after the final render.Remember to delete intermediate files in ./outputs, ./outputs/_manim_media included.
+7.  **Cleanup**: Delete temporary `.py` scripts and intermediate files after the final render.Remember to delete intermediate files in `./outputs`, `./outputs/_manim_media` included.
 
 ## 5. Music & Voice Policy
 - If the user explicitly says "no background music," do not add any. If the user specifies a background music track, use the corresponding music from the `musics/` directory. If neither specified nor requested to be absent, randomly select a background music track from the `musics/` directory.

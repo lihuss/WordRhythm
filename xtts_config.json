@@ -2,7 +2,7 @@
   "model_path": "../Linly-Dubbing/models/TTS/XTTS-v2",
   "speaker_wav": "../Linly-Dubbing/models/TTS/XTTS-v2/samples/zh-cn-sample.wav",
   "speaker_wavs": {
-    "female": "voices/female.wav",
-    "male": "voices/male.wav"
+    "female": "materials/voices/female.wav",
+    "male": "materials/voices/male.wav"
   }
 }

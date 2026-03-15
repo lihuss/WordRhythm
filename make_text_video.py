@@ -71,7 +71,7 @@ def build_parser() -> ArgumentParser:
     parser.add_argument("--text-file", type=str, help="Path to script file.")
     parser.add_argument("--output", type=str, default="outputs/output.mp4", help="Output path.")
     parser.add_argument("--fonts-dir", type=str, default="materials/fonts")
-    parser.add_argument("--musics-dir", type=str, default="musics")
+    parser.add_argument("--musics-dir", type=str, default="materials/musics")
     parser.add_argument("--no-bgm", action="store_true")
     parser.add_argument("--bgm-volume", type=float, default=0.18)
     parser.add_argument("--tts-gain", type=float, default=1.35)

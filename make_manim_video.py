@@ -252,7 +252,7 @@ def build_parser() -> ArgumentParser:
     parser.add_argument("--tts-device", type=str, choices=["auto", "cuda", "cpu"], default="auto")
     parser.add_argument("--tts-gain", type=float, default=1.35)
 
-    parser.add_argument("--musics-dir", type=str, default="musics", help="Folder with background music.")
+    parser.add_argument("--musics-dir", type=str, default="materials/musics", help="Folder with background music.")
     parser.add_argument("--seed", type=int, default=None, help="Random seed for deterministic background music selection.")
     parser.add_argument("--no-bgm", action="store_true", help="Disable background music completely.")
     parser.add_argument("--bgm-path", type=str, default="")

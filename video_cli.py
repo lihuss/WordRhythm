@@ -49,7 +49,7 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 3:
-        print("Usage: python concat_videos.py <input1.mp4> <input2.mp4> ... <output.mp4>")
+        print("Usage: python video_cli.py <input1.mp4> <input2.mp4> ... <output.mp4>")
         sys.exit(1)
         
     input_videos = sys.argv[1:-1]
