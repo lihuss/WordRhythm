@@ -85,7 +85,7 @@ python video_cli.py input1.mp4 input2.mp4 output.mp4
 
 在编写新的 Manim 场景时，请遵循以下规则：
 1. **公式下标**：避免在 `MathTex` 中使用中文下标（如 `R_总`），请替换为英文（如 `R_{total}`）以确保跨平台编译兼容性。
-2. **色彩规范**：建议能量输入使用 `RED_C`，能量输出使用 `YELLOW_C`。
+2. 待续...
 
 ---
 
